@@ -24,5 +24,14 @@ namespace CsvParserApp.Controllers
         {
             return _personManagementService!.GetAllPeople();
         }
+
+        [HttpGet]
+        [ActionName("Get people with 'Esq' in Company Name")]
+        [SwaggerOperation(Summary = "Get people with 'Esq' in Company Name")]
+        //GET: api/v1/people/
+        public ActionResult<IEnumerable<Object>> GetPeopleWithCompanyNameContainingEsq()
+        {
+            return _personManagementService!.GetPeopleWithEsqInCompanyName();
+        }
     }
 }

@@ -32,7 +32,20 @@ namespace CsvParserAppTests.Services
             Assert.That(people[0].first_name, Is.EqualTo("Aleshia"));
             Assert.That(people[1].first_name, Is.EqualTo("Evan"));
             Assert.That(people[2].first_name, Is.EqualTo("France"));
-        }     
+        }
+
+        [Test]
+        public void GetPeopleWithEsqInCompanyName_Returns_People_With_Esq_In_CompanyName()
+        {
+            var data = GetTestData();
+
+            var service = MockDBSet(data);
+            var people = service.GetPeopleWithEsqInCompanyName();
+
+            var result = people.Skip(1);
+
+            Assert.That(result.Count, Is.EqualTo(1));
+        }
 
         private IQueryable<Person> GetTestData()
         {

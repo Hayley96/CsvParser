@@ -33,6 +33,19 @@ namespace CsvParserAppTests.ContollersTests
             result.Value!.Count().Should().Be(3);
         }
 
+        [Test]
+        public void GetPeopleWithCompanyNameContainingEsq_Returns_List_of_Objects()
+        {
+            //Arange
+            _mockPersonManagementService!.Setup(b => b.GetPeopleWithEsqInCompanyName()).Returns(GetTestObject());
+
+            //Act
+            var result = _controller!.GetPeopleWithCompanyNameContainingEsq();
+
+            //Assert
+            result.Should().BeOfType(typeof(ActionResult<IEnumerable<Object>>));
+        }
+
         private static List<Person> GetTestPeople()
         {
             return new List<Person>
