@@ -5,6 +5,7 @@ namespace CsvParserApp.Services
     public class PersonManagementService : IPersonManagementService
     {
         private readonly PersonContext _context;
+        public List<string>? peopleList { get; private set; } = new();
 
         public PersonManagementService(PersonContext context)
         {
@@ -56,5 +57,13 @@ namespace CsvParserApp.Services
             return PrepareResultString(people);
         }
 
+        public List<Object> GetPeopleWhoLiveInPostCodeSingleDigit()
+        {
+            var peopleraw = _context.People!.ToList();
+            foreach (var item in peopleraw)
+                if (item.postal!.Substring(0, item.postal.IndexOf(" ")).Count(i => Char.IsDigit(i)) == 1)
+                    peopleList!.Add(item.Id + "-" + item.first_name + " " + item.last_name + "-" + item.company_name);
+            return PrepareResultString(peopleList!.AsQueryable());
+        }
     }
 }

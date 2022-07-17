@@ -60,5 +60,14 @@ namespace CsvParserApp.Controllers
         {
             return _personManagementService!.GetPeopleWhoseURLIsLongerThan35Chars();
         }
+
+        [HttpGet]
+        [ActionName("Get people who live in a postcode with a single digit value")]
+        [SwaggerOperation(Summary = "Get people who live in a postcode with a single digit value")]
+        //GET: api/v1/people/
+        public ActionResult<IEnumerable<Object>> GetPeopleWhoLiveInPostcodeWithSingleDigitValue()
+        {
+            return _personManagementService!.GetPeopleWhoLiveInPostCodeSingleDigit();
+        }
     }
 }

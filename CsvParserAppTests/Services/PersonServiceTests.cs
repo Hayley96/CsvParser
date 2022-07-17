@@ -28,7 +28,7 @@ namespace CsvParserAppTests.Services
             var service = MockDBSet(data);
             var people = service.GetAllPeople();
 
-            Assert.That(people.Count, Is.EqualTo(3));
+            Assert.That(people.Count, Is.EqualTo(5));
             Assert.That(people[0].first_name, Is.EqualTo("Aleshia"));
             Assert.That(people[1].first_name, Is.EqualTo("Evan"));
             Assert.That(people[2].first_name, Is.EqualTo("France"));
@@ -70,7 +70,7 @@ namespace CsvParserAppTests.Services
 
             var result = people.Skip(1);
 
-            Assert.That(result.Count, Is.EqualTo(2));
+            Assert.That(result.Count, Is.EqualTo(4));
         }
 
         [Test]
@@ -84,6 +84,18 @@ namespace CsvParserAppTests.Services
             var result = people.Skip(1);
 
             Assert.That(result.Count, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void GetPeopleWhoLiveInPostCodeSingleDigit_Returns_People_With_PostCode_With_Single_Digit()
+        {
+            var data = GetTestData();
+            var service = MockDBSet(data);
+            var people = service.GetPeopleWhoLiveInPostCodeSingleDigit();
+
+            var result = people.Skip(1);
+
+            Assert.That(result.Count, Is.EqualTo(2));
         }
 
         private IQueryable<Person> GetTestData()
@@ -131,7 +143,35 @@ namespace CsvParserAppTests.Services
                         phone2 = "01935-821636",
                         email = "france.andrade@hotmail.com",
                         web = "http://www.elliottjohnwesq.co.uk"
-                    }
+                    },
+                                new Person()
+                   {
+                       first_name = "Zoe",
+                       last_name = "Zigomalas",
+                       company_name = "Cap Gemini America",
+                       address = "555 Binney St",
+                       city = "Abbey Ward",
+                       county = "Buckinghamshire",
+                       postal = "H21 2AX",
+                       phone1 = "01937-864715",
+                       phone2 = "01714-737668",
+                       email = "evan.zigomalas@gmail.com",
+                       web = "http://www.capgeminiamerica.co.uk"
+                   },
+                new Person()
+                   {
+                       first_name = "Marvin",
+                       last_name = "Zigomalas",
+                       company_name = "Cap Gemini America",
+                       address = "555 Binney St",
+                       city = "Abbey Ward",
+                       county = "Buckinghamshire",
+                       postal = "SE21 2AX",
+                       phone1 = "01937-864715",
+                       phone2 = "01714-737668",
+                       email = "evan.zigomalas@gmail.com",
+                       web = "http://www.capgeminiamerica.co.uk"
+                   },
             }.AsQueryable();
         }
 
