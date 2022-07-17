@@ -12,9 +12,11 @@
    2. [API Reference](#APIReference)
 3. [Pre-requisites](#prerequisites)
 4. [Getting Started](#gettingStarted)
-   1. [Running Application](#runningapplication)
-   2. [Main Entry Point](#mainentrypoint)
-   3. [Running Tests](#runningtests)
+   1. [Application Setup](#applicationsetup)
+   2. [Restore Dependencies](#restoredependencies)
+   3. [Run Application](#runapplication)
+   4. [Running Tests](#runningtests)
+   5. [Main Entry Point](#mainentrypoint)
 
 
 
@@ -104,27 +106,39 @@ An API app designed to parse a CSV file and return records based on a set of cri
 
 ## 🔀 Getting Started <a name="gettingStarted"></a>
 
-### Running the Application <a name="runningapplication"></a>
+### Application Setup <a name="applicationsetup"></a>
 
 Fork this repo to your Github and then clone the forked version of this repo.
 
-- Restore dependencies:
+- Setup:
 	- Open up project in Visual Studio
 	- This application requires a path pointing to a csv file. By default the path is set to `@"D:\Data\input.csv"`:
 	 -  To use this application you will neeed to either specify a new file path or create a folder with a file in the default directory location
-	  - You will need to modify the path in the following file:
+	  - You will need to modify the path in the following files:
 	    * [ParserManagementService.cs](https://github.com/Hayley96/CsvParser/blob/main/CsvParserApp/Services/ParserManagementService.cs)
+	      * ![ParserManagementServiceFilePath](https://github.com/Hayley96/CsvParser/blob/main/ParserManagementService_FilePath.PNG)
 	    * [CsvParserTests.cs](https://github.com/Hayley96/CsvParser/blob/main/CsvParserAppTests/CsvParserTests/CsvParserTests.cs)
+	      * ![CsvParserTests](https://github.com/Hayley96/CsvParser/blob/main/CsvParserTests_FilePath.PNG)
 	    * [ParserServicesTests.cs](https://github.com/Hayley96/CsvParser/blob/main/CsvParserAppTests/Services/ParserServicesTests.cs)
-	- Open up a terminal and navigate to the root folder of the main application directory [BookManagerApi](./BookManagerApi):
-	 - run: `dotnet restore`
+	      * ![ParserServicesTests](https://github.com/Hayley96/CsvParser/blob/main/ParserServicesTest_FilePath.PNG)
 
-### Main Entry Point <a name="mainentrypoint"></a>
-- The Main Entry Point for the application is: [Program.cs](./BookManagerApi/Program.cs)
+### Restore Dependencies <a name="restoredependencies"></a>
+
+- Open up a terminal and navigate to the root folder of the main application directory [CsvParser](./CsvParserApp):
+ - run: `dotnet restore`
+
+### Run Application <a name="runapplication"></a>
+
+- You can run the application in Visual Studio, or you can go to your terminal and inside the root of this directory, run:
+ - run: `dotnet run`
 
 ### Running the Unit Tests <a name="runningtests"></a>
 
 - You can run the unit tests in Visual Studio, or you can go to your terminal and inside the root of this directory, run:
   - `dotnet test`
 
-Thank you!! 👋
+### Main Entry Point <a name="mainentrypoint"></a>
+- The Main Entry Point for the application is: [Program.cs](https://github.com/Hayley96/CsvParser/blob/main/CsvParserApp/Program.cs)
+
+
+## Thank you!! 👋
