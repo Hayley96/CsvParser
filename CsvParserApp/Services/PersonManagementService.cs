@@ -47,5 +47,14 @@ namespace CsvParserApp.Services
                          select p.Id + "-" + p.first_name + " " + p.last_name + "-" + p.company_name;
             return PrepareResultString(people);
         }
+
+        public List<Object> GetPeopleWhoseURLIsLongerThan35Chars()
+        {
+            var people = from p in _context.People
+                         where p.web!.Length > 35
+                         select p.Id + "-" + p.first_name + " " + p.last_name + "-" + p.company_name;
+            return PrepareResultString(people);
+        }
+
     }
 }

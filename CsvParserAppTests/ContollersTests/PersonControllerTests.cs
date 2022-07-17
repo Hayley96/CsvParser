@@ -72,6 +72,19 @@ namespace CsvParserAppTests.ContollersTests
             result.Should().BeOfType(typeof(ActionResult<IEnumerable<Object>>));
         }
 
+        [Test]
+        public void GetPeopleWhoseURLLengthGreaterThan35_Returns_List_of_Objects()
+        {
+            //Arange
+            _mockPersonManagementService!.Setup(b => b.GetPeopleWhoseURLIsLongerThan35Chars()).Returns(GetTestObject());
+
+            //Act
+            var result = _controller!.GetPeopleWhoseURLLengthGreaterThan35();
+
+            //Assert
+            result.Should().BeOfType(typeof(ActionResult<IEnumerable<Object>>));
+        }
+
         private static List<Person> GetTestPeople()
         {
             return new List<Person>

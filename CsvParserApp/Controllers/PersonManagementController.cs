@@ -51,5 +51,14 @@ namespace CsvParserApp.Controllers
         {
             return _personManagementService!.GetPeopleWhoseHouseNumberIsThreeDigits();
         }
+
+        [HttpGet]
+        [ActionName("Get people whose website URL length is greater than 35 characters")]
+        [SwaggerOperation(Summary = "Get people whose website URL length is greater than 35 characters")]
+        //GET: api/v1/people/
+        public ActionResult<IEnumerable<Object>> GetPeopleWhoseURLLengthGreaterThan35()
+        {
+            return _personManagementService!.GetPeopleWhoseURLIsLongerThan35Chars();
+        }
     }
 }

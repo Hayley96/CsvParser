@@ -61,7 +61,7 @@ namespace CsvParserAppTests.Services
         }
 
         [Test]
-        public void GetPeopleWhoseHouseNumberIsThreeDigits_Returns_People_With_House_Number_Consisting_of_3_Digits()
+        public void GetPeopleWhoseHouseNumberIsThreeDigits_Returns_People_With_House_Number_Consisting_of_3_Digits_Only()
         {
             var data = GetTestData();
 
@@ -71,6 +71,19 @@ namespace CsvParserAppTests.Services
             var result = people.Skip(1);
 
             Assert.That(result.Count, Is.EqualTo(2));
+        }
+
+        [Test]
+        public void GetPeopleWhoseURLIsLongerThan35Chars_Returns_People_With_URL_Length_Greater_Than_35()
+        {
+            var data = GetTestData();
+
+            var service = MockDBSet(data);
+            var people = service.GetPeopleWhoseURLIsLongerThan35Chars();
+
+            var result = people.Skip(1);
+
+            Assert.That(result.Count, Is.EqualTo(1));
         }
 
         private IQueryable<Person> GetTestData()
