@@ -31,5 +31,13 @@ namespace CsvParserApp.Services
             result.Insert(0, "Count:" + people.Count());
             return result;
         }
+
+        public List<Object> GetPeopleWhoLiveInDerbyshire()
+        {
+            var people = from p in _context.People
+                         where p.county!.Equals("Derbyshire")
+                         select p.Id + "-" + p.first_name + " " + p.last_name + "-" + p.company_name;
+            return PrepareResultString(people);
+        }
     }
 }

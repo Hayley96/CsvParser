@@ -47,6 +47,19 @@ namespace CsvParserAppTests.Services
             Assert.That(result.Count, Is.EqualTo(1));
         }
 
+        [Test]
+        public void GetPeopleWhoLiveInDerbyshire_Returns_People_With_County_Derbyshire()
+        {
+            var data = GetTestData();
+
+            var service = MockDBSet(data);
+            var people = service.GetPeopleWhoLiveInDerbyshire();
+
+            var result = people.Skip(1);
+
+            Assert.That(result.Count, Is.EqualTo(2));
+        }
+
         private IQueryable<Person> GetTestData()
         {
             return new List<Person>
@@ -73,7 +86,7 @@ namespace CsvParserAppTests.Services
                        address = "555 Binney St",
                        city = "Abbey Ward",
                        county = "Buckinghamshire",
-                       postal = "HP1 2AX",
+                       postal = "H91 2AX",
                        phone1 = "01937-864715",
                        phone2 = "01714-737668",
                        email = "evan.zigomalas@gmail.com",

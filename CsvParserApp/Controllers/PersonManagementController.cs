@@ -33,5 +33,14 @@ namespace CsvParserApp.Controllers
         {
             return _personManagementService!.GetPeopleWithEsqInCompanyName();
         }
+
+        [HttpGet]
+        [ActionName("Get people from Derbyshire")]
+        [SwaggerOperation(Summary = "Get people from Derbyshire")]
+        //GET: api/v1/people/
+        public ActionResult<IEnumerable<Object>> GetPeopleFromDerbyshire()
+        {
+            return _personManagementService!.GetPeopleWhoLiveInDerbyshire();
+        }
     }
 }
