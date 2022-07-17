@@ -12,6 +12,9 @@
    2. [API Reference](#APIReference)
 3. [Pre-requisites](#prerequisites)
 4. [Getting Started](#gettingStarted)
+   1. [Running Application](#runningapplication)
+   2. [Main Entry Point](#mainentrypoint)
+   3. [Running Tests](#runningtests)
 
 
 
@@ -101,6 +104,8 @@ An API app designed to parse a CSV file and return records based on a set of cri
 
 ## 🔀 Getting Started <a name="gettingStarted"></a>
 
+### Running the Application <a name="runningapplication"></a>
+
 Fork this repo to your Github and then clone the forked version of this repo.
 
 - Restore dependencies:
@@ -114,10 +119,10 @@ Fork this repo to your Github and then clone the forked version of this repo.
 	- Open up a terminal and navigate to the root folder of the main application directory [BookManagerApi](./BookManagerApi):
 	 - run: `dotnet restore`
 
-### Main Entry Point
+### Main Entry Point <a name="mainentrypoint"></a>
 - The Main Entry Point for the application is: [Program.cs](./BookManagerApi/Program.cs)
 
-### Running the Unit Tests
+### Running the Unit Tests <a name="runningtests"></a>
 
 - You can run the unit tests in Visual Studio, or you can go to your terminal and inside the root of this directory, run:
   - `dotnet test`
