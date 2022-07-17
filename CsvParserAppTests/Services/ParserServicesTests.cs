@@ -1,99 +1,45 @@
 ﻿using CsvParserApp.Controllers;
 using CsvParserApp.Models;
+using CsvParserApp.Parser;
 using CsvParserApp.Services;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 
 namespace CsvParserAppTests.Services
 {
-    public class PersonServiceTests
+    public class ParserServicesTests
     {
-        private PersonManagementController? _controller;
-        private Mock<IPersonManagementService>? _mockPersonManagementService;
+        private ParserManagementService _parserManagementService;
+        private CsvParser? _parser;
+        private PersonContext? _context;
 
         [SetUp]
         public void Setup()
         {
-            _mockPersonManagementService = new Mock<IPersonManagementService>();
-            _controller = new PersonManagementController(_mockPersonManagementService.Object);
+            var options = new DbContextOptionsBuilder<PersonContext>()
+            .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
+            .Options;
+
+            _parser = new ();
+            _context = new (options);
+            _parserManagementService = new(_context);
         }
 
         [Test]
-        public void GetAllPeople_Returns_All_People()
+        public void CreatePeopleData_Returns_All_Count_Of_People_Created()
         {
-            var data = GetTestData();
 
-            var service = MockDBSet(data);
-            var people = service.GetAllPeople();
+            var people = _parserManagementService.CreatePeopleData(_parser!);
 
-            Assert.That(people.Count, Is.EqualTo(5));
-            Assert.That(people[0].first_name, Is.EqualTo("Aleshia"));
-            Assert.That(people[1].first_name, Is.EqualTo("Evan"));
-            Assert.That(people[2].first_name, Is.EqualTo("France"));
+            Assert.That(people, Is.EqualTo(500));
         }
 
         [Test]
-        public void GetPeopleWithEsqInCompanyName_Returns_People_With_Esq_In_CompanyName()
+        public void GetFilePath_Returns_All_Count_Of_People_Created()
         {
-            var data = GetTestData();
+            var people = _parserManagementService.GetFilePath();
 
-            var service = MockDBSet(data);
-            var people = service.GetPeopleWithEsqInCompanyName();
-
-            var result = people.Skip(1);
-
-            Assert.That(result.Count, Is.EqualTo(1));
-        }
-
-        [Test]
-        public void GetPeopleWhoLiveInDerbyshire_Returns_People_With_County_Derbyshire()
-        {
-            var data = GetTestData();
-
-            var service = MockDBSet(data);
-            var people = service.GetPeopleWhoLiveInDerbyshire();
-
-            var result = people.Skip(1);
-
-            Assert.That(result.Count, Is.EqualTo(2));
-        }
-
-        [Test]
-        public void GetPeopleWhoseHouseNumberIsThreeDigits_Returns_People_With_House_Number_Consisting_of_3_Digits_Only()
-        {
-            var data = GetTestData();
-
-            var service = MockDBSet(data);
-            var people = service.GetPeopleWhoseHouseNumberIsThreeDigits();
-
-            var result = people.Skip(1);
-
-            Assert.That(result.Count, Is.EqualTo(4));
-        }
-
-        [Test]
-        public void GetPeopleWhoseURLIsLongerThan35Chars_Returns_People_With_URL_Length_Greater_Than_35()
-        {
-            var data = GetTestData();
-
-            var service = MockDBSet(data);
-            var people = service.GetPeopleWhoseURLIsLongerThan35Chars();
-
-            var result = people.Skip(1);
-
-            Assert.That(result.Count, Is.EqualTo(1));
-        }
-
-        [Test]
-        public void GetPeopleWhoLiveInPostCodeSingleDigit_Returns_People_With_PostCode_With_Single_Digit()
-        {
-            var data = GetTestData();
-            var service = MockDBSet(data);
-            var people = service.GetPeopleWhoLiveInPostCodeSingleDigit();
-
-            var result = people.Skip(1);
-
-            Assert.That(result.Count, Is.EqualTo(2));
+            Assert.That(people, Is.EqualTo(@"D:\Data\input.csv"));
         }
 
         private IQueryable<Person> GetTestData()
@@ -172,8 +118,7 @@ namespace CsvParserAppTests.Services
                    },
             }.AsQueryable();
         }
-
-        public PersonManagementService MockDBSet(IQueryable<Person> data)
+        public ParserManagementService MockDBSet(IQueryable<Person> data)
         {
             var mockSet = new Mock<DbSet<Person>>();
             mockSet.As<IQueryable<Person>>().Setup(m => m.Provider).Returns(data.Provider);
@@ -188,7 +133,7 @@ namespace CsvParserAppTests.Services
             var mockContext = new Mock<PersonContext>(options);
             mockContext.Setup(c => c.People).Returns(mockSet.Object);
 
-            return new PersonManagementService(mockContext.Object);
+            return new ParserManagementService(mockContext.Object);
         }
     }
 }
