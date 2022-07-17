@@ -10,8 +10,9 @@
 2. [Application Overview](#applicationOverview)
    1. [Technologies Used](#technologiesUsed)
    2. [API Reference](#APIReference)
-3. [Getting Started](#gettingStarted)
-    1. [Pre-requisites](#prerequisites)
+3. [Pre-requisites](#prerequisites)
+4. [Getting Started](#gettingStarted)
+
 
 
 ## Introduction :wave: <a name="introduction"></a>
@@ -93,12 +94,31 @@ An API app designed to parse a CSV file and return records based on a set of cri
 | `Get people who live in a postcode with a single digit value` | `List<Object>`| returns list of people whose postcode contains one digit          |
 
 
-
-## 🔀 Getting Started <a name="gettingStarted"></a>
-
-### Pre-requisites <a name="prerequisites"></a>
+## Pre-requisites <a name="prerequisites"></a>
 
 * C# / .NET 6
 * NuGet
 
-//IN PROGRESS
+## 🔀 Getting Started <a name="gettingStarted"></a>
+
+Fork this repo to your Github and then clone the forked version of this repo.
+
+- Restore dependencies:
+	- Open up project in Visual Studio
+	- This application requires a path pointing to a csv file. By default the path is set to `@"D:\Data\input.csv"`:
+	 -  To use this application you will neeed to either specify a new file path or create a folder with a file in the default directory location
+	  - You will need to modify the path in the following file:
+	    * [CsvParserTests.cs](./CsvParser/CsvParserAppTests/CsvParserTests/CsvParserTests.cs)
+	    * 
+	- Open up a terminal and navigate to the root folder of the main application directory [BookManagerApi](./BookManagerApi):
+	 - run: `dotnet restore`
+
+### Main Entry Point
+- The Main Entry Point for the application is: [Program.cs](./BookManagerApi/Program.cs)
+
+### Running the Unit Tests
+
+- You can run the unit tests in Visual Studio, or you can go to your terminal and inside the root of this directory, run:
+  - `dotnet test`
+
+Thank you!! 👋
