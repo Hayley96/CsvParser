@@ -49,5 +49,29 @@ namespace CsvParserAppTests.CsvParserTests
 
             Assert.That(result.Count, Is.EqualTo(12));
         }
+
+        [Test]
+        public void Create_returns_An_Instance_Of_T()
+        {
+            var result = _parser.Create<Person>();
+
+            Assert.That(result, Is.InstanceOf<Person>());
+        }
+
+        [Test]
+        public void MapValuesToTypeTProperties_returns_An_Instance_Of_T_With_Correct_Property_Values()
+        {
+            string fileName = "input.csv";
+            var path = @"D:\Data\" + fileName;
+            string delimeter = ",";
+            var lines = _parser.GetData(path, delimeter);
+            var headers = _parser.GetHeaders(lines, delimeter);
+            List<PropertyInfo> props = _parser.GetSystemPropertiesOfT<Person>();
+
+            var result = _parser.MapValuesToTypeTProperties<Person>(lines[1], delimeter, headers, props);
+
+            Assert.That(result, Is.InstanceOf<Person>());
+            Assert.That(result.first_name == "Aleshia");
+        }
     }
 }
