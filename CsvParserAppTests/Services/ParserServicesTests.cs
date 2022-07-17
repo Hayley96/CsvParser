@@ -1,5 +1,4 @@
-﻿using CsvParserApp.Controllers;
-using CsvParserApp.Models;
+﻿using CsvParserApp.Models;
 using CsvParserApp.Parser;
 using CsvParserApp.Services;
 using Microsoft.EntityFrameworkCore;
