@@ -1,5 +1,7 @@
 # :page_with_curl: CsvParser
 
+An API app using asynchronus enpoints and data loaded from external files.
+
 <div id="header" align="center">
   <img src="https://media.giphy.com/media/vXZJBKjb0UtpFWzvpQ/giphy.gif" width="100"/> 
 </div>
@@ -21,9 +23,14 @@
 
 
 ## Introduction :wave: <a name="introduction"></a>
-An API app designed to parse a CSV file and return records based on a set of criteria. 
+An API app designed to parse a CSV file and return records from different endpoints based on a pre-established set of criteria. 
 
 ## :computer: Application Overview <a name="applicationOverview"></a>
+
+The application consists of the following main componenets:
+
+* CSV Parser
+* Data Query
 
 ### ⚒️ Technologies Used <a name="technologiesUsed"></a>
 
