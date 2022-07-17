@@ -7,5 +7,6 @@ namespace CsvParserApp.Services
         List<Person> GetAllPeople();
         List<Object> GetPeopleWithEsqInCompanyName();
         List<Object> GetPeopleWhoLiveInDerbyshire();
+        List<Object> GetPeopleWhoseHouseNumberIsThreeDigits();
     }
 }

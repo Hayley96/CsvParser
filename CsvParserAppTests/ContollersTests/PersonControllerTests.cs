@@ -59,6 +59,19 @@ namespace CsvParserAppTests.ContollersTests
             result.Should().BeOfType(typeof(ActionResult<IEnumerable<Object>>));
         }
 
+        [Test]
+        public void GetPeopleWhoseHouseNumberIsExactlyThreeDigits_Returns_List_of_Objects()
+        {
+            //Arange
+            _mockPersonManagementService!.Setup(b => b.GetPeopleWhoseHouseNumberIsThreeDigits()).Returns(GetTestObject());
+
+            //Act
+            var result = _controller!.GetPeopleWhoseHouseNumberIsExactlyThreeDigits();
+
+            //Assert
+            result.Should().BeOfType(typeof(ActionResult<IEnumerable<Object>>));
+        }
+
         private static List<Person> GetTestPeople()
         {
             return new List<Person>

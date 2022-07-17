@@ -60,6 +60,19 @@ namespace CsvParserAppTests.Services
             Assert.That(result.Count, Is.EqualTo(2));
         }
 
+        [Test]
+        public void GetPeopleWhoseHouseNumberIsThreeDigits_Returns_People_With_House_Number_Consisting_of_3_Digits()
+        {
+            var data = GetTestData();
+
+            var service = MockDBSet(data);
+            var people = service.GetPeopleWhoseHouseNumberIsThreeDigits();
+
+            var result = people.Skip(1);
+
+            Assert.That(result.Count, Is.EqualTo(2));
+        }
+
         private IQueryable<Person> GetTestData()
         {
             return new List<Person>

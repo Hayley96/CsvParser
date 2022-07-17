@@ -42,5 +42,14 @@ namespace CsvParserApp.Controllers
         {
             return _personManagementService!.GetPeopleWhoLiveInDerbyshire();
         }
+
+        [HttpGet]
+        [ActionName("Get people whose house number is exactly 3 digits")]
+        [SwaggerOperation(Summary = "Get people whose house number is exactly 3 digits")]
+        //GET: api/v1/people/
+        public ActionResult<IEnumerable<Object>> GetPeopleWhoseHouseNumberIsExactlyThreeDigits()
+        {
+            return _personManagementService!.GetPeopleWhoseHouseNumberIsThreeDigits();
+        }
     }
 }

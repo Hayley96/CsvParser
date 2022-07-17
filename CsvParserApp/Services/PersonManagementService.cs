@@ -39,5 +39,13 @@ namespace CsvParserApp.Services
                          select p.Id + "-" + p.first_name + " " + p.last_name + "-" + p.company_name;
             return PrepareResultString(people);
         }
+
+        public List<Object> GetPeopleWhoseHouseNumberIsThreeDigits()
+        {
+            var people = from p in _context.People
+                         where p.address!.Substring(0, p.address.IndexOf(" ")).Length == 3
+                         select p.Id + "-" + p.first_name + " " + p.last_name + "-" + p.company_name;
+            return PrepareResultString(people);
+        }
     }
 }
