@@ -9,20 +9,22 @@ namespace CsvParserAppTests.CsvParserTests
     public class CsvParserTests
     {
         private CsvParser _parser;
+        private string path;
+        private string fileName;
+        private string delimeter;
 
         [SetUp]
         public void Setup()
         {
             _parser = new();
+            fileName = "input.csv";
+            path = @"D:\Data\" + fileName;
+            delimeter = ",";
         }
 
         [Test]
         public void GetData_returns_All_FileData()
         {
-            string fileName = "input.csv";
-            var path = @"D:\Data\" + fileName;
-            string delimeter = ",";
-
             var result = _parser.GetData(path, delimeter);
 
             Assert.That(result.Count, Is.EqualTo(501));
@@ -32,10 +34,6 @@ namespace CsvParserAppTests.CsvParserTests
         [Test]
         public void GetHeaders_returns_All_FileHeaders()
         {
-            string fileName = "input.csv";
-            var path = @"D:\Data\" + fileName;
-            string delimeter = ",";
-
             var lines = _parser.GetData(path, delimeter);
             var result = _parser.GetHeaders(lines, delimeter);
 
@@ -61,9 +59,6 @@ namespace CsvParserAppTests.CsvParserTests
         [Test]
         public void MapValuesToTypeTProperties_returns_An_Instance_Of_T_With_Correct_Property_Values()
         {
-            string fileName = "input.csv";
-            var path = @"D:\Data\" + fileName;
-            string delimeter = ",";
             var lines = _parser.GetData(path, delimeter);
             var headers = _parser.GetHeaders(lines, delimeter);
             List<PropertyInfo> props = _parser.GetSystemPropertiesOfT<Person>();
