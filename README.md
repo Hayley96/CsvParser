@@ -108,8 +108,9 @@ Fork this repo to your Github and then clone the forked version of this repo.
 	- This application requires a path pointing to a csv file. By default the path is set to `@"D:\Data\input.csv"`:
 	 -  To use this application you will neeed to either specify a new file path or create a folder with a file in the default directory location
 	  - You will need to modify the path in the following file:
+	    * [ParserManagementService.cs](./CsvParser/CsvParserApp/ParserManagementService.cs)
 	    * [CsvParserTests.cs](./CsvParser/CsvParserAppTests/CsvParserTests/CsvParserTests.cs)
-	    * 
+	    * [ParserServicesTests.cs](./CsvParser/CsvParserAppTests/CsvParserTests/ParserServicesTests.cs)
 	- Open up a terminal and navigate to the root folder of the main application directory [BookManagerApi](./BookManagerApi):
 	 - run: `dotnet restore`
 
