@@ -113,8 +113,8 @@ Fork this repo to your Github and then clone the forked version of this repo.
 - Setup:
 	- Open up project in Visual Studio
 	- This application requires a path pointing to a csv file. By default the path is set to `@"D:\Data\input.csv"`:
-	 -  To use this application you will neeed to either specify a new file path or create a folder with a file in the default directory location
-	  - You will need to modify the path in the following files:
+	 -  To use this application you will need to either specify a new file path or create a folder with a file in the default directory location
+	  - To change the filepath in the appliation, you will need to modify the path in the following files:
 	    * [ParserManagementService.cs](https://github.com/Hayley96/CsvParser/blob/main/CsvParserApp/Services/ParserManagementService.cs)
 	      * ![ParserManagementServiceFilePath](https://github.com/Hayley96/CsvParser/blob/main/ParserManagementService_FilePath.PNG)
 	    * [CsvParserTests.cs](https://github.com/Hayley96/CsvParser/blob/main/CsvParserAppTests/CsvParserTests/CsvParserTests.cs)
