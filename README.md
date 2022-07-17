@@ -114,8 +114,8 @@ Fork this repo to your Github and then clone the forked version of this repo.
 	 -  To use this application you will neeed to either specify a new file path or create a folder with a file in the default directory location
 	  - You will need to modify the path in the following file:
 	    * [ParserManagementService.cs](https://github.com/Hayley96/CsvParser/blob/main/CsvParserApp/Services/ParserManagementService.cs)
-	    * [CsvParserTests.cs](./CsvParser/CsvParserAppTests/CsvParserTests/CsvParserTests.cs)
-	    * [ParserServicesTests.cs](./CsvParser/CsvParserAppTests/Services/ParserServicesTests.cs)
+	    * [CsvParserTests.cs](https://github.com/Hayley96/CsvParser/blob/main/CsvParserAppTests/CsvParserTests/CsvParserTests.cs)
+	    * [ParserServicesTests.cs](https://github.com/Hayley96/CsvParser/blob/main/CsvParserAppTests/Services/ParserServicesTests.cs)
 	- Open up a terminal and navigate to the root folder of the main application directory [BookManagerApi](./BookManagerApi):
 	 - run: `dotnet restore`
 
