@@ -1,10 +1,7 @@
 # :page_with_curl: CsvParser
 
-An API app using asynchronus enpoints and data loaded from external files.
+An API app using asynchronous endpoints and data loaded from external files.
 
-<div id="header" align="center">
-  <img src="https://media.giphy.com/media/vXZJBKjb0UtpFWzvpQ/giphy.gif" width="100"/> 
-</div>
 </br>
 
 ## :link: Table of contents
@@ -27,7 +24,7 @@ An API app designed to parse a CSV file and return records from different endpoi
 
 ## :computer: Application Overview <a name="applicationOverview"></a>
 
-The application consists of the following main componenets:
+The application consists of the following main components:
 
 * CSV Parser
 * Data Query
